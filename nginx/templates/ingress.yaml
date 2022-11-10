@@ -1,34 +1,18 @@
 apiVersion: networking.k8s.io/v1
-
 kind: Ingress
-
 metadata:
-
   name: minimal-ingress
-
   annotations:
-
     nginx.ingress.kubernetes.io/rewrite-target: /
 
 spec:
-
   rules:
   - host: "bps21619.ml"
-
     http:
-
       paths:
-
-      - path: 
-
-        pathType: Prefix
-
+      - path: /
         backend:
-
           service:
-
             name: {{ include "nginx.fullname" . }}
-
             port:
-
               number: 80
