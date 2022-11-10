@@ -13,5 +13,6 @@ spec:
       - path: /
         pathType: Prefix
         backend:
-           serviceName: {{ include "nginx.fullname" . }}
-           servicePort: 80
+           service:
+             name: {{ include "nginx.fullname" . }}
+             port: 80
