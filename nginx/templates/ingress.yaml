@@ -19,7 +19,7 @@ spec:
 
       paths:
 
-      - path: /
+      - path: 
 
         pathType: Prefix
 
