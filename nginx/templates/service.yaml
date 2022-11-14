@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "nginx.fullname" . }}
   labels:
-    {{- include "nginx.selectorLabels" . | nindent 6 }}
+    {{- include "nginx.labels" | nindent 6 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
