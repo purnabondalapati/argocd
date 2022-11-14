@@ -7,8 +7,8 @@ metadata:
 
 spec:
   rules:
-  #- host: "ec2-65-0-203-239.ap-south-1.compute.amazonaws.com"
-  - http:
+  - host: "bps21619.com"
+   http:
       paths:
       - path: /
         pathType: Prefix
