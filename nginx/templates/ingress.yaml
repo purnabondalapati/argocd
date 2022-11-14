@@ -8,7 +8,7 @@ metadata:
 spec:
   rules:
   - host: "bps21619.com"
-   http:
+    http:
       paths:
       - path: /
         pathType: Prefix
