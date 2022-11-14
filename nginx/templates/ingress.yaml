@@ -7,7 +7,7 @@ metadata:
 
 spec:
   rules:
-  #- host: "ec2-65-0-203-239.ap-south-1.compute.amazonaws.com"
+  - host: "ec2-65-0-203-239.ap-south-1.compute.amazonaws.com"
     http:
       paths:
       - path: /
@@ -16,4 +16,4 @@ spec:
            service:
              name: {{ include "nginx.fullname" . }}
              port: 
-               number: 8082
+               number: 80
