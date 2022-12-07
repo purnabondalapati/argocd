@@ -47,7 +47,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: "bps21619.ml"
+    - host: ""
       paths:
         - path: /
           pathType: ImplementationSpecific
