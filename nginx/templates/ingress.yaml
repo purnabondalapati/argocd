@@ -16,4 +16,4 @@ spec:
            service:
              name: {{ include "nginx.fullname" . }}
              port: 
-               number: 8081
+               number: 80
