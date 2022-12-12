@@ -7,6 +7,7 @@ metadata:
 spec:
   ports:
   - port: 5601
+    targetPort: 5601
   selector:
     component: {{ include "filebeat.fullname" . }}-kibana
 ---
@@ -19,8 +20,10 @@ metadata:
 spec:
   ports:
   - port: 9200
+    targetPort: 9200
     name: client
   - port: 9300
+    targetPort: 9300
     name: nodes
   selector:
     component: {{ include "filebeat.fullname" . }}-elasticsearch
@@ -34,5 +37,6 @@ metadata:
 spec:
   ports:
   - port: 5044
+    targetPort: 5044
   selector:
     component: {{ include "filebeat.fullname" . }}-logstash
