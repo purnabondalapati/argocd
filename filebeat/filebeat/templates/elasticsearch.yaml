@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "filebeat.fullname" . }}-elasticsearch
+  labels:
+    component: {{ include "filebeat.fullname" . }}-elasticsearch
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      component: {{ include "filebeat.fullname" . }}-elasticsearch
+  template:
+    metadata:
+      labels:
+        component: {{ include "filebeat.fullname" . }}-elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: elasticsearch:7.16.3
+          ports:
+            - containerPort: 9200
+              name: client
+            - containerPort: 9300
+              name: nodes
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: -Xmx256m -Xms256m
+            - name: discovery.type
+              value: single-node
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 0.5
+            limits:
+              memory: 500Mi
+              cpu: 0.5
+---

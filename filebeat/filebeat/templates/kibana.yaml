@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "filebeat.fullname" . }}-kibana
+  labels:
+    component: {{ include "filebeat.fullname" . }}-kibana
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      component: {{ include "filebeat.fullname" . }}-kibana
+  template:
+    metadata:
+      labels:
+        component: {{ include "filebeat.fullname" . }}-kibana
+    spec:
+      containers:
+        - name: kibana
+          image: kibana:7.16.3
+          ports:
+            - containerPort: 5601
+---

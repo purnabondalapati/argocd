@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "filebeat.fullname" . }}-logstash
+  labels:
+    component: {{ include "filebeat.fullname" . }}-logstash
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      component: {{ include "filebeat.fullname" . }}-logstash
+  template:
+    metadata:
+      labels:
+        component: {{ include "filebeat.fullname" . }}-logstash
+    spec:
+      containers:
+        - name: logstash
+          image: logstash:7.16.3
+          ports:
+            - containerPort: 5044
+          volumeMounts:
+            - name: logstash-config
+              mountPath: /usr/share/logstash/pipeline
+      volumes:
+        - name: logstash-config
+          configMap:
+            name: {{ include "filebeat.fullname" . }}-logstash
+---
