@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: busybox
-          image: busybox
+          image: nginx
           args:
             - sh
             - -c
@@ -31,7 +31,7 @@ spec:
             - name: log
               mountPath: /var/log
         - name: filebeat
-          image: elastic/filebeat:7.16.3
+          image: elastic/filebeat:7.17.6
           args:
             - -c
             - /etc/filebeat/conf.yaml
