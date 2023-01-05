@@ -25,12 +25,12 @@ jobs:
       uses: kodermax/kubectl-aws-eks@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
-        NAMESPACE: namespace
+        NAMESPACE: bps
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: my-app
-        IMAGE_TAG: ${{ github.sha }}
+        ECR_REPOSITORY: nginx
+        IMAGE_TAG: 1.0.0
       with:
-        args: set image -n ${{NAMESPACE}} deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        args: set image -n ${{NAMESPACE}} deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
       uses: kodermax/kubectl-aws-eks@master
