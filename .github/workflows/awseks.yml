@@ -1,10 +1,5 @@
 name: manually deploy latest ecr images build by branch name in stage cluster
-on:  
-  workflow_dispatch:
-    inputs:
-      git-ref:
-        description: Git Ref 
-        required: false
+on:  [workflow_dispatch]
 
 jobs:
   deploy:
