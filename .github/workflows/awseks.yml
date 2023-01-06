@@ -25,13 +25,14 @@ jobs:
       uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
+        KUBE_HOST: B6736EA74EADF0E549DFBE6D5E3C65A7.gr7.ap-south-1.eks.amazonaws.com
         NAMESPACE: bps
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: nginx
-        IMAGE_TAG: 1.0.0
+        IMAGE_TAG: 1.0.2
       with:
        args: |
-          set image --namespace bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          set image --namespace bps deployment.apps/nginx  $ECR_REPOSITORY/$ECR_REPOSITORY:1.0.0=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
       uses: actions-hub/kubectl@master
