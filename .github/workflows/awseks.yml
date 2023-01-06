@@ -21,8 +21,8 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: deploy to cluster
-      #uses: kodermax/kubectl-aws-eks@master
-      uses: actions-hub/kubectl@master
+      uses: kodermax/kubectl-aws-eks@master
+      #uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
         KUBE_HOST: B6736EA74EADF0E549DFBE6D5E3C65A7.gr7.ap-south-1.eks.amazonaws.com
@@ -35,7 +35,7 @@ jobs:
           set image --namespace bps deployment.apps/nginx  $ECR_REPOSITORY/$ECR_REPOSITORY:1.0.0=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
-      uses: actions-hub/kubectl@master
+      uses: kodermax/kubectl-aws-eks@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
