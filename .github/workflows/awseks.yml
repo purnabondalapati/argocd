@@ -31,12 +31,11 @@ jobs:
         ECR_REPOSITORY: nginx
         IMAGE_TAG: 1.0.2
       with:
-       args: |
-          set image --namespace bps deployment.apps/nginx   626453062267.dkr.ecr.ap-south-1.amazonaws.com/nginx:1.0.0=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+       args:  set image --namespace bps deployment.apps/nginx   $ECR_REGISTRY/$ECR_REPOSITORY:1.0.0=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
       uses: kodermax/kubectl-aws-eks@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: rollout status deployment/my-app
+        args: rollout status deployment.apps/nginx
