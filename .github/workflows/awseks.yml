@@ -22,7 +22,7 @@ jobs:
 
     - name: deploy to cluster
       #uses: kodermax/kubectl-aws-eks@master
-      uses: kodermax/kubectl-aws-eks@master 
+      uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA_STAGING }}
         NAMESPACE: bps
@@ -34,7 +34,7 @@ jobs:
           set image --namespace bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
-      uses: kodermax/kubectl-aws-eks@master
+      uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
