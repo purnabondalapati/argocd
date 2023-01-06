@@ -31,7 +31,7 @@ jobs:
         IMAGE_TAG: 1.0.0
       with:
        args: |
-          set image -n bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          set image --namespace bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
     - name: verify deployment
       uses: actions-hub/kubectl@master
