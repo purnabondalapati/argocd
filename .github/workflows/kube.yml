@@ -1,4 +1,4 @@
-name: deploy latest ecr images build by branch name in stage cluster
+name: stage cluster
 on:  [workflow_dispatch]
 
 jobs:
