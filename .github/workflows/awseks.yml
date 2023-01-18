@@ -34,7 +34,7 @@ jobs:
        args: |
    
          kubectl set image -n bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-         kubecrl rollout restart   -n bps deployment.apps/nginx
+         kubectl rollout restart   -n bps deployment.apps/nginx
         
 #     - name: verify deployment
 #       uses: kodermax/kubectl-aws-eks@master
