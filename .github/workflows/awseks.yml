@@ -34,7 +34,7 @@ jobs:
        args: |
        
          #kubectl set image -n bps deployment.apps/nginx  $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-         kubectl patch -n bps deployment.apps/nginx -p '{"spec":{"template":{"spec":{"containers":[{"name":"$ECR_REPOSITORY","image":"$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"}]}}}}'
+         kubectl patch -n bps deployment.apps/nginx -p '{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"$ECR_REPOSITORY\",\"image\":\"$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG\"}]}}}}'
          kubectl rollout restart   -n bps deployment.apps/nginx
         
 #     - name: verify deployment
