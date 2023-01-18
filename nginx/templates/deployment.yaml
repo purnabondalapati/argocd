@@ -32,7 +32,7 @@ spec:
         - name: {{ .Chart.Name }}
           
           image: {{ .Values.image.repository }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}:1.161
           ports:
             - name: http
               containerPort: 80
