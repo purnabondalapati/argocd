@@ -21,6 +21,14 @@ spec:
         {{- include "nginx.selectorLabels" . | nindent 8 }}
     spec:
       containers:
+        - name : {{ .Chart.Name }}-nginx
+          image: nginx
+          ports:
+            - name: https
+              containerPort: 80
+              protocol: TCP
+          
+           
         - name: {{ .Chart.Name }}
           
           image: {{ .Values.image.repository }}
