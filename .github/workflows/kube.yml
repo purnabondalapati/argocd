@@ -35,6 +35,8 @@ jobs:
             export PATH=$PATH:/usr/local/bin
             echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
             eksctl version
+    - name: updating cluster
+      run: aws eks update-kubeconfig --region ap-south-1 --name purna
       
 
 #     - name: deploy to cluster
