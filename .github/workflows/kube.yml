@@ -44,6 +44,8 @@ jobs:
             eksctl version
     - name: updating cluster
       run: aws eks update-kubeconfig --region ap-south-1 --name purna
+    - name: geting nodes
+      run : kubectl get nodes
       
 
 #     - name: deploy to cluster
